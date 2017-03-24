@@ -1,0 +1,41 @@
+-- HUMAN RESOURCE MACHINE PROGRAM --
+
+a:
+    INBOX   
+    COPYTO   0
+    INBOX   
+    COPYTO   1
+    INBOX   
+    COPYTO   2
+    SUB      1
+    JUMPN    c
+b:
+    COPYFROM 2
+    COPYTO   3
+    COPYFROM 1
+    COPYTO   2
+    COPYFROM 3
+    COPYTO   1
+c:
+    COPYFROM 1
+    SUB      0
+    JUMPN    d
+    COPYFROM 1
+    COPYTO   3
+    COPYFROM 0
+    COPYTO   1
+    COPYFROM 3
+    COPYTO   0
+d:
+    COPYFROM 1
+    SUB      2
+    JUMPN    b
+    COPYFROM 2
+    OUTBOX  
+    COPYFROM 1
+    OUTBOX  
+    COPYFROM 0
+    OUTBOX  
+    JUMP     a
+
+
