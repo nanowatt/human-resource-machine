@@ -1,0 +1,25 @@
+-- HUMAN RESOURCE MACHINE PROGRAM --
+
+a:
+    INBOX   
+    COPYTO   16
+    COPYFROM 14
+    COPYTO   15
+    COPYTO   17
+b:
+    COPYFROM [15]
+    JUMPZ    e
+    SUB      16
+    JUMPZ    d
+c:
+    BUMPUP   15
+    JUMP     b
+d:
+    BUMPUP   17
+    JUMP     c
+e:
+    COPYFROM 17
+    OUTBOX  
+    JUMP     a
+
+
