@@ -1,30 +1,46 @@
 -- HUMAN RESOURCE MACHINE PROGRAM --
 
 a:
+    COPYFROM 24
+    COPYTO   20
 b:
-    BUMPUP   24
-    INBOX   
+    INBOX
+    COPYTO   [20]
     JUMPZ    d
-    COPYTO   [24]
-    JUMP     a
+    BUMPUP   20
+    JUMP     b
+    COMMENT  1
 c:
-    COPYFROM [19]
-    OUTBOX  
-    COPYFROM [24]
-    COPYTO   [19]
 d:
-    BUMPDN   24
-    JUMPZ    b
-    COPYTO   23
+    COPYFROM 24
+    COPYTO   21
+    COPYTO   22
+    BUMPUP   22
+    COMMENT  2
 e:
-    COPYFROM 23
-    COPYTO   19
+    COPYFROM [22]
+    JUMPZ    g
+    SUB      [21]
+    JUMPN    f
+    BUMPUP   21
+    BUMPUP   22
+    JUMP     e
+    COMMENT  3
 f:
-    BUMPDN   23
-    JUMPZ    c
-    COPYFROM [23]
-    SUB      [19]
-    JUMPN    e
-    JUMP     f
-
-
+    COPYFROM [21]
+    COPYTO   23
+    COPYFROM [22]
+    COPYTO   [21]
+    COPYFROM 23
+    COPYTO   [22]
+    JUMP     c
+    COMMENT  4
+g:
+    COPYFROM 24
+    COPYTO   20
+h:
+    COPYFROM [20]
+    JUMPZ    a
+    OUTBOX
+    BUMPUP   20
+    JUMP     h

@@ -2,51 +2,49 @@
 
 a:
 b:
-    COPYFROM 23
-    COPYTO   22
 c:
-    INBOX   
-    COPYTO   [22]
-    JUMPZ    d
-    BUMPUP   22
-    JUMP     c
-d:
-    COPYFROM 23
+    COMMENT  2
+    INBOX
+    COPYTO   [23]
+    JUMPZ    e
+    BUMPUP   23
     COPYTO   22
+    JUMP     c
+    COMMENT  0
+d:
+    COPYFROM [23]
+    OUTBOX
+    BUMPDN   22
+    JUMPZ    h
+    BUMPUP   23
 e:
-    COPYFROM [22]
-    JUMPZ    j
-    INBOX   
-    COPYTO   21
-    JUMPZ    a
-    SUB      [22]
-    JUMPZ    f
-    JUMPN    l
-    JUMP     g
+    COPYTO   23
+    INBOX
+    JUMPZ    i
+    COPYTO   24
+    SUB      [23]
+    JUMPZ    d
+    JUMPN    k
+    COMMENT  1
 f:
-    COPYFROM 21
-    OUTBOX  
-    BUMPUP   22
-    JUMP     e
+    COPYFROM [23]
+    JUMPZ    g
+    OUTBOX
+    BUMPUP   23
+    JUMP     f
+    COMMENT  5
 g:
 h:
-    COPYFROM [22]
-    JUMPZ    i
-    OUTBOX  
-    BUMPUP   22
-    JUMP     h
 i:
 j:
+    INBOX
+    JUMPZ    a
+    JUMP     j
+    COMMENT  3
 k:
-    INBOX   
-    JUMP     k
+    COPYFROM 24
 l:
-    COPYFROM 21
-    OUTBOX  
-m:
-    INBOX   
+    OUTBOX
+    INBOX
     JUMPZ    b
-    OUTBOX  
-    JUMP     m
-
-
+    JUMP     l
